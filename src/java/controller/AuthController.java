@@ -79,9 +79,9 @@ public class AuthController extends HttpServlet {
         String type = request.getParameter("type");
         
         if(type.equals("LOGIN")){
-            String userName = request.getParameter("userName");
+            String email = request.getParameter("email");
             String password = request.getParameter("password");
-            postLogin(request, response, userName, password);
+            postLogin(request, response, email, password);
         } if(type.equals("REGISTER")) {
             
             String userName = request.getParameter("userName");
@@ -91,7 +91,7 @@ public class AuthController extends HttpServlet {
             String firstName = request.getParameter("firstName");
             String lastName = request.getParameter("lastName");
             String password = request.getParameter("password");
-            User user = new User(11, userName, email, 
+            User user = new User(0, userName, email, 
                     phone, address, firstName, lastName);
             postRegister(request, response, user, password);
         }
@@ -105,21 +105,23 @@ public class AuthController extends HttpServlet {
 			int status = userDao.checkLoginUser(email, password);
 			switch (status) {
 			case 0:// login success
-				User user = userDao.getUser(email);
-				HttpSession session = request.getSession();
+				User user = userDao.getUserByEmail(email);
+                                HttpSession session = request.getSession();
 				session.setAttribute("isLogged", true);// user is logged
-				session.setAttribute("user", user);
-				session.setMaxInactiveInterval(60 * 60);// second
-				response.sendRedirect("Home");
+				session.setAttribute("user", user.getUserName());
+				response.sendRedirect("userhome.jsp");
 				break;
 			case 1:// wrong password66
 				request.setAttribute("loginStatus", 1);
+                                request.setAttribute("msg", "Wrong password");
 				request.setAttribute("email", email);
+                                
 				request.getRequestDispatcher("login.jsp").forward(request, response);
 				break;
 			case 2:// userName not found
 				request.setAttribute("loginStatus", 2);
 				request.setAttribute("email", email);
+                                request.setAttribute("msg", "Account is not exist!!!");
 				request.getRequestDispatcher("login.jsp").forward(request, response);
 				break;
 
@@ -140,10 +142,15 @@ public class AuthController extends HttpServlet {
             throws ServletException, IOException {
         
         UserDao dao = new UserDao();
-        if(dao.getUser(user.getEmail())!= null){
+        if(dao.getUserByUserName(user.getUserName())!= null){
+            request.setAttribute("msg", "User is exist!!!");
+            request.getRequestDispatcher("register.jsp").forward(request, response);
+        } 
+        if(dao.getUserByEmail(user.getEmail())!= null){
             request.setAttribute("msg", "Email is exist!!!");
             request.getRequestDispatcher("register.jsp").forward(request, response);
-        } else {
+        } 
+        else {
             dao.createUser(user, password);
             response.sendRedirect("login.jsp");
             

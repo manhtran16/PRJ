@@ -2,6 +2,7 @@ package model;
 
 public class User {
 	private int userID;
+	private int userRole;
 	private String userName;
 	private String email;
 	private String phoneNumber;
@@ -12,79 +13,99 @@ public class User {
 	public User() {
 	}
 
-	public User(int userID, String userName, String email, String phoneNumber, String address,
-			String firstName, String lastName) {
-		this.userID = userID;
-		this.userName = userName;
-		this.email = email;
-		this.phoneNumber = phoneNumber;
-		this.address = address;
-		this.firstName = firstName;
-		this.lastName = lastName;
-	}
+    public User(int userRole, String userName, String email, String phoneNumber, String address, String firstName, String lastName) {
+        this.userRole = userRole;
+        this.userName = userName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 
+    public User(int userID, int userRole, String userName, String email, String phoneNumber, String address, String firstName, String lastName) {
+        this.userID = userID;
+        this.userRole = userRole;
+        this.userName = userName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 
-	// Getter và Setter cho tất cả các thuộc tính
-	public int getUserID() {
-		return userID;
-	}
+    public int getUserID() {
+        return userID;
+    }
 
-	public void setUserID(int userID) {
-		this.userID = userID;
-	}
+    public void setUserID(int userID) {
+        this.userID = userID;
+    }
 
-	public String getUserName() {
-		return userName;
-	}
+    public int getUserRole() {
+        return userRole;
+    }
 
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
+    public void setUserRole(int userRole) {
+        this.userRole = userRole;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public String getUserName() {
+        return userName;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
-	public String getPhoneNumber() {
-		return phoneNumber;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public String getAddress() {
-		return address;
-	}
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 
-	public String getFirstName() {
-		return firstName;
-	}
+    public String getAddress() {
+        return address;
+    }
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
-	public String getLastName() {
-		return lastName;
-	}
+    public String getFirstName() {
+        return firstName;
+    }
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-	@Override
-	public String toString() {
-		return "User [userID=" + userID + ", userRole=" +  ", userName=" + userName + ", email=" + email
-				+ ", phoneNumber=" + phoneNumber + ", address=" + address + ", firstName=" + firstName + ", lastName="
-				+ lastName + "]";
-	}
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" + "userID=" + userID + ", userRole=" + userRole + 
+                ", userName=" + userName + ", email=" + email + 
+                ", phoneNumber=" + phoneNumber + ", address=" + 
+                address + ", firstName=" + firstName + 
+                ", lastName=" + lastName + '}';
+    }
+
+        
 }
