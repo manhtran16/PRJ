@@ -48,7 +48,7 @@
             background-size: cover;
             background-position: center;
             height: 300px;
-            color: white;
+            color: black;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -97,13 +97,13 @@
         <a href="userhome.jsp">Trang chủ</a>
         <a href="products.jsp">Sản phẩm</a>
         <a href="about.jsp">Giới thiệu</a>
-        <a href="login.jsp">Đăng nhập</a>
         <a href="home.jsp">Đăng xuất</a>
     </nav>
 
     <div class="banner">
         Thời trang cho mọi phong cách!
     </div>
+        
 
     <div class="content">
         <h2>Sản phẩm nổi bật</h2>

@@ -38,7 +38,7 @@
             background-size: cover;
             background-position: center;
             height: 300px;
-            color: white;
+            color: black;
             display: flex;
             align-items: center;
             justify-content: center;

@@ -109,7 +109,11 @@ public class AuthController extends HttpServlet {
                                 HttpSession session = request.getSession();
 				session.setAttribute("isLogged", true);// user is logged
 				session.setAttribute("user", user.getUserName());
-				response.sendRedirect("userhome.jsp");
+                                if(user.getUserRole()==0){
+				response.sendRedirect("userhome.jsp");}
+                                else {
+                                    response.sendRedirect("admin/admin_home.jsp");
+                                }
 				break;
 			case 1:// wrong password66
 				request.setAttribute("loginStatus", 1);
